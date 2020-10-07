@@ -26,7 +26,6 @@ function test(obj) {
     }
     
     symbolId = obj.id;
-
     checkSym = symbolId.match(/[+-/%=*]/gi);
 
     if (checkSym===null) {
