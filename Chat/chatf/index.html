@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini-chat</title>
     <script src="/Chat/chatf/index.js"></script>
-    <link href="/Chat/chatf/index.css">
+    <link rel="stylesheet" href="index.css" type="text/css"/>
 </head>
 <body>
     <div>
-        <ul id="menu">
+        <div>
+            <ul id="menu">
             
-        </ul>
+            </ul>
+        </div>
+        <div>
+            <textarea id="textarea-message" class="textarea-message" type="text" placeholder="Введите текст" onchange="checkTxtArea()"></textarea>
+            <button onclick="submitMessage()">Send</button>
+        </div>
     </div>
 </body>
 </html>

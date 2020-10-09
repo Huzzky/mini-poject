@@ -2,7 +2,6 @@
 
 const request = new Request("http://192.168.1.69:8000/let/u/?format=json");
 
-
 fetch("http://192.168.1.69:8000/let/m/?format=json")
     .then(respone => respone.json())
     .then(data => {
@@ -20,9 +19,18 @@ fetch("http://192.168.1.69:8000/let/m/?format=json")
 
         let liEntry = document.createElement("li");
         liEntry.textContent = "";
-
         menu.appendChild(li);
         menu.appendChild(liMessage);
         menu.appendChild(liEntry);
        })
     })
+
+function checkTxtArea() {
+  console.log(document.getElementById("textarea-message").value)
+}
+
+function submitMessage() {
+  
+  const txtarea = document.getElementById('textarea-message');
+  txtarea.textContent = "Ололололол";
+}
