@@ -10,6 +10,9 @@ class MCSer(serializers.Serializer):
     date_send_message = serializers.DateTimeField()
     from_user_id = serializers.IntegerField()
 
+    def create(self, validated_data):
+        return MessageChat.objects.create(**validated_data)
+
 
 class FilterSer(serializers.Serializer):
     messages = MCSer(read_only=True, many=True)

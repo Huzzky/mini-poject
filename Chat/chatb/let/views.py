@@ -19,6 +19,7 @@ class LoginUser(APIView):
         })
 
 
+
 class MessageGet(APIView):
     def get(self, request):
         filters = {}
@@ -28,4 +29,16 @@ class MessageGet(APIView):
         serial = FilterSer(filters)
         return Response ({
             "data":serial.data
+        })
+
+    def post(self, request):
+        message = request.data.get('message')
+        
+        serializerPost =  MCSer(data=message)
+
+        if serializerPost.is_valid(raise_exception=True):
+            post_saved = serializerPost.save()
+
+        return Response({
+            "success": "Post '{}' created successfully".format(post_saved.content_post)
         })
