@@ -40,5 +40,5 @@ class MessageGet(APIView):
             post_saved = serializerPost.save()
 
         return Response({
-            "success": "Post '{}' created successfully".format(post_saved.content_post)
+            "success": "Message created successfully"
         })

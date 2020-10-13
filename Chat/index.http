@@ -1,0 +1,15 @@
+# POST http://192.168.1.69:8000/let/m/?format=json
+# content-type: application/json
+
+# {
+#     "message" : {
+#         "message_user": "Опа, чирик",
+#         "date_send_message": "2020-10-13T17:50:36.068Z",
+#         "from_user_id": 1
+#     }
+# }
+
+GET http://192.168.1.69:8000/let/m/?format=json
+
+
+

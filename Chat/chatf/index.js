@@ -1,6 +1,11 @@
 'use strict'
+// Загрузка сообщений
 loadMessage();
-// document.getElementById("btnSend").disabled = true;
+
+
+window.onload = function() {
+  // document.getElementById("btnSend").disabled = true;
+}
 
 function loadMessage() {
   fetch("http://192.168.1.69:8000/let/m/?format=json")
@@ -35,12 +40,25 @@ function loadMessage() {
 
 
 
+function checkTextArea() {
+  // console.log(object)
+  if (document.getElementById('textarea-message').value != "") {
+    document.getElementById("btnSend").disabled = false;
+  } else if (document.getElementById('textarea-message').value == "") {
+    document.getElementById("btnSend").disabled = true;
+  }
+}
+
+
 function submitMessage() {
-  
+  let dateMessageSend = new Date();
   let message = {
-    message_user: document.getElementById("textarea-message").value,
-    date_send_message: Date.now(),
-    from_user_id: 1
+    "message": {
+      "message_user": document.getElementById("textarea-message").value,
+      "date_send_message": dateMessageSend.toISOString(),
+      "from_user_id": 1
+    }
+    
   }
 
   fetch("http://192.168.1.69:8000/let/m/?format=json", {
@@ -48,10 +66,7 @@ function submitMessage() {
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
-    body: {"message":JSON.stringify(message)}
+    body: JSON.stringify(message)
   })
-  .then(
-    console.log('"message:"', JSON.stringify(message))
-  ); 
 
 }

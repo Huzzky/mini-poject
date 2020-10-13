@@ -14,8 +14,8 @@
             
             </ul>
         </div>
-            <textarea id="textarea-message" class="textarea-message" type="text" placeholder="Введите текст"></textarea>
-            <input type="button" id="btnSend" onclick="submitMessage()">
+            <textarea id="textarea-message" class="textarea-message" type="text" onkeyup="checkTextArea()" placeholder="Введите текст"></textarea>
+            <input disabled type="button" id="btnSend" value="Отправить" onclick="submitMessage()">
         </div>
     </div>
 </body>
