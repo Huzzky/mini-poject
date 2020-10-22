@@ -25,7 +25,7 @@ SECRET_KEY = '7wok_zerm@t(z5%h23x3iib6#c&l3l3#hvrw(g2w!)xloo-ls^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.69']
+ALLOWED_HOSTS = ['192.168.1.66']
 
 
 # Application definition

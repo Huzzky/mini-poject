@@ -1,34 +1,44 @@
 'use strict'
 // Загрузка сообщений
 loadMessage();
+var data1 = 0;
 
+setInterval(loadMessage, 1000)
 
 window.onload = function() {
   // document.getElementById("btnSend").disabled = true;
 }
 
 function loadMessage() {
-  fetch("http://192.168.1.69:8000/let/m/?format=json")
+  fetch("http://192.168.1.66:8000/let/m/?format=json")
   .then(respone => respone.json())
   .then(data => {
-    data.data.messages.map((user, value) => {
-      const testData = data.data['users'];
+    if (data1 < data.data['messages'].length) {
+      data.data.messages.map((user, value) => {
+        const testData = data.data['users'];
+  
+        const menu = document.getElementById('menu');
+        let li = document.createElement('li');
+        
+        li.textContent = testData[user['from_user_id']-1]['name_user'];
+        
+  
+        let liMessage = document.createElement('li');
+        liMessage.textContent = user['message_user']
+  
+        let liEntry = document.createElement("li");
+        liEntry.textContent = "";
+        menu.appendChild(li);
+        menu.appendChild(liMessage);
+        menu.appendChild(liEntry);
+       })
+       console.log("готово");
+      //  console.log(data.data['messages'].length);
+        data1 = data.data['messages'].length;
+    } else {
+      return 0;
+    }
 
-      const menu = document.getElementById('menu');
-      let li = document.createElement('li');
-      
-      li.textContent = testData[user['from_user_id']-1]['name_user'];
-      
-
-      let liMessage = document.createElement('li');
-      liMessage.textContent = user['message_user']
-
-      let liEntry = document.createElement("li");
-      liEntry.textContent = "";
-      menu.appendChild(li);
-      menu.appendChild(liMessage);
-      menu.appendChild(liEntry);
-     })
   })
     .catch(() => {
       const menu = document.getElementById('menu');
@@ -61,7 +71,7 @@ function submitMessage() {
     
   }
 
-  fetch("http://192.168.1.69:8000/let/m/?format=json", {
+  fetch("http://192.168.1.66:8000/let/m/?format=json", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
